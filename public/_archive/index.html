@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LR Main Navigation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+        * {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;     /*mobile scrolling fix*/
+            position: relative;     /*mobile scrolling fix*/
+        }
+
+        .container {
+            position: fixed;    /*use this to float on top, disable scroll, and offscreen non-hidden*/
+            width: 100vw;
+            height: 100vh;
+            transform: translate(0,0);
+            transition: all 0.5s ease;
+            /*overflow: hidden;*/
+            z-index: 50;
+        }
+
+        .turn_to_page_1 {
+            position: absolute;
+            transform: translate(0,0);
+        }
+        .turn_to_page_2 {
+            position: absolute;
+            transform: translate(-100vw, 0);
+        }
+        .turn_to_page_3 {
+            position: absolute;
+            transform: translate(-200vw, 0);
+        }
+        .turn_to_page_4 {
+            position: absolute;
+            transform: translate(-300vw, 0);
+        }
+
+        /*PAGE SETTINGS*/
+        .page {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            border: 5px solid black;
+            box-sizing: border-box;
+        }
+
+        /* PAGE POSITIONS */
+        .page_1_pos {
+            position: absolute;
+            transform: translate(0, 0);
+            border: 5px solid red;
+        }
+        .page_2_pos {
+            position: absolute;
+            transform: translate(100vw, 0);
+            border: 5px solid green;
+        }
+        .page_3_pos {
+            position: absolute;
+            transform: translate(200vw, 0);
+            border: 5px solid blue;
+        }
+        .page_4_pos {
+            position: absolute;
+            transform: translate(300vw, 0);
+            border: 5px solid orange;
+        }
+
+        .nav {
+            position: absolute;
+            width: 80vw;
+            height: 50px;
+            bottom: 50px;
+            left: 50%;
+            transform: translate(-50%, 0);
+
+            border: 1px black solid;
+            /*background: blue;*/
+            z-index: 100;
+            padding: 0;
+
+            box-sizing: border-box;
+        }
+
+        .navbutton_1 {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 100%;
+        }
+        .navbutton_2 {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 100%;
+        }
+        .navbutton_3 {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 100%;
+        }
+        .navbutton_4 {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="nav" class="nav">
+    <button id="navbutton_1" class="navbutton_1"> 1 </button>
+    <button id="navbutton_2" class="navbutton_2"> 2 </button>
+    <button id="navbutton_3" class="navbutton_3"> 3 </button>
+    <button id="navbutton_4" class="navbutton_4"> 4 </button>
+
+</div>
+
+
+<div id="container" class="container">
+
+    <div id="page_1" class="page page_1_pos">
+        <div id="title" class="title">
+            <h2>LR SIGNUP</h2>
+        </div>
+        <div id="resultDiv" class="resultDiv">
+
+            <!--&lt;!&ndash;dynamically create this.&ndash;&gt;-->
+            <!--<form id="mainForm" class="mainForm">-->
+                <!--<label for="email">email</label>-->
+                <!--<input id="email" type="email" name="email" required autocomplete="on" placeholder="180LA email address"> <br>-->
+                <!--<label for="password">password</label>-->
+                <!--<input id="password" type="password" name="password" placeholder="password" required><br>-->
+                <!--<label for="confirm_password">confirm</label>-->
+                <!--<input id="confirm_password" type="password" name="confirm_password" placeholder="confirm password" required> <br>-->
+                <!--<button id="submitButton" type="submit">create new user</button>-->
+            <!--</form>-->
+
+        </div>
+    </div>
+
+    <div id="page_2" class="page page_2_pos">
+        <div id="title2" class="title">
+            <h2>LR LOGIN</h2>
+        </div>
+        <form id="loginForm" class="loginForm">
+            <label for="login_email">email</label>
+            <input id="login_email" type="email" name="login_email" autocomplete="on" placeholder="180LA email address" required> <br>
+
+            <label for="login_password">password</label>
+            <input id="login_password" type="password" name="login_password" placeholder="password" required> <br>
+
+            <button id="submitButton" type="submit">login</button>
+        </form>
+
+        <div id="resultDiv2" class="resultDiv">
+        </div>
+    </div>
+
+    <div id="page_3" class="page page_3_pos">
+        <div id="title3" class="title">
+            <h2>LR Page 3</h2>
+        </div>
+        <div id="resultDiv3" class="resultDiv">
+            <button id="clear_cookie_button">clear cookie</button>
+        </div>
+    </div>
+
+    <div id="page_4" class="page page_4_pos">
+        <div id="title4" class="title">
+            <h2>LR Page 4</h2>
+        </div>
+
+        <button id="check_credentials_button">check credentials</button>
+
+        <div id="resultDiv4" class="resultDiv">
+        </div>
+    </div>
+
+
+</div>
+
+<!-- MAIN PAGE LOGIC -->
+<script src="js/lr_page_navigation.js"></script>
+
+<!--TODO: EMAIL VALIDATION SCRIPT, eventually merge with lr_page_navigation -->
+<script>
+    // VARS -------------
+    var token;
+
+    // LOCAL FUNCTIONS ---------
+
+    /**
+     * Dynamically create the elements of a sign up page.
+     * @param target_div    Target div to append to (resultDiv, resultDiv2, etc)
+     */
+    function create_signup_page(target_div){
+        // create form
+        var form = document.createElement('form');
+        form.id = 'mainForm';
+        form.classList.add('mainForm');
+
+        // create email input
+        var email_label = document.createElement('label');
+        email_label.htmlFor = 'email';
+        email_label.innerHTML = 'email';
+
+        var email_input = document.createElement('input');
+        email_input.id = 'email';
+        email_input.type = 'text';
+        email_input.name = 'email';
+        email_input.required = true;
+        email_input.autocomplete = true;
+        email_input.placeholder = '180LA email address';
+
+        // create password input
+        var pwd_label = document.createElement('label');
+        pwd_label.htmlFor = 'password';
+        pwd_label.innerHTML = 'password';
+
+        var password_input = document.createElement('input');
+        password_input.id = 'password';
+        password_input.type = 'password';
+        password_input.name = 'password';
+        password_input.placeholder = 'password';
+        password_input.required = true;
+
+        // create password confirm
+        var confirm_label = document.createElement('label');
+        confirm_label.htmlFor = 'confirm_password';
+        confirm_label.innerHTML = 'confirm';
+
+        var confirm_input = document.createElement('input');
+        confirm_input.id = 'confirm_password';
+        confirm_input.type = 'password';
+        confirm_input.name = 'confirm_password';
+        confirm_input.placeholder = 'confirm password';
+        confirm_input.required = true;
+
+        // create submit button
+        var submit_button = document.createElement('button');
+        submit_button.id = 'submitButton';
+        submit_button.type = 'submit';
+
+        var submit_button_text = document.createTextNode('create new user');
+        submit_button.appendChild(submit_button_text);
+
+        var br = document.createElement('br');
+        var br2 = document.createElement('br');
+        var br3 = document.createElement('br');
+
+        // APPEND TO TARGET DIV ---------------
+        form.appendChild(email_label);
+        form.appendChild(email_input);
+        form.appendChild(br);
+        form.appendChild(pwd_label);
+        form.appendChild(password_input);
+        form.appendChild(br2);
+        form.appendChild(confirm_label);
+        form.appendChild(confirm_input);
+        form.appendChild(br3);
+        form.appendChild(submit_button);
+
+        // ADD EVENT LISTENERS
+        password_input.addEventListener('change', function(e){
+            validate_email(password_input, confirm_input);
+        });
+
+        confirm_input.addEventListener('keyup', function(e){
+            validate_email(password_input, confirm_input);
+        });
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            submit_new_user(email_input.value, password_input.value);
+        });
+
+        // append Form to Div.
+        target_div.appendChild(form);
+    }
+
+    /**
+     * Check to ensure both password and confirm-password fields are matching.
+     * @param passwd    Password textfield element (value is pulled from within the function).
+     * @param confirm   Confirm-Password textfield element (value is pulled from within the function).
+     */
+    function validate_email(passwd, confirm) {
+        if(passwd.value != confirm.value) {
+            confirm.setCustomValidity('Passwords do not match!');
+        } else {
+            confirm.setCustomValidity('');
+        }
+    }
+
+    //TODO: put token storage logic here.
+
+    /**
+     * Parse and handle the response from XHR.
+     * @param xhr_object    JQXHR Object.
+     * @param info_object   Data or Error object.
+     * @param target_div    Target DOM element to append info to.
+     */
+    function handle_response(xhr_object, info_object, target_div) {
+        console.log(xhr_object.status);
+        console.log(info_object);
+
+        switch(xhr_object.status) {
+
+            case 200:
+                target_div.innerHTML = '<h3>User Authenticated! </h3> <p><b>Your user id: </b>' +  info_object.payload.user + '</p>' +
+                    '<b>Your friends: </b>' + info_object.payload.friends;
+                console.log('User has been successfully authenticated. Should have been given a cookie.');
+                break;
+            case 201:
+                target_div.innerHTML = '<h3>New User created. </h3>';
+                console.log('User created. Process JWT cookie and move on. ');
+                //TODO: store token here.
+                break;
+            case 401:
+                target_div.innerHTML = '<h3>User authentication check failed. Password incorrect (hide in production)</h3>';
+                break;
+            case 403:
+                target_div.innerHTML = '<h3>User is not authenticated. Try logging in first. </h3>';
+                console.log('User is not authenticated. Try logging in first. ');
+                break;
+            case 409:
+                target_div.innerHTML = '<h3>User already exists.</h3>';
+                console.log('User already exists. Use this to drive visual feedback. ');
+                break;
+            case 422:
+                target_div.innerHTML = '<h3>Authentication failed. Incorrect email or password. </h3>';
+                console.log('Authentication failed. Incorrect email or password. ');
+                break;
+            default:
+                target_div.innerHTML = '<h3>Unknown error.</h3>';
+                console.log('Default error. ');
+        }
+    }
+
+    /**
+     * Submit new user data to the API.
+     * @param input_email   Email string (gets cleaned, even if HTML5 email type field isn't supported).
+     * @param input_pwd     Password string (Spaces get removed).
+     */
+    function submit_new_user(input_email, input_pwd) {
+
+        // CLEAN EMAIL
+        var clean_email = input_email;
+        clean_email = clean_email.replace(/\\/g, '');       // strip backslashes
+        clean_email = clean_email.replace(/\{\}/g, '');     // strip backslashes (again?)
+        clean_email = clean_email.replace(/\s\s+/g, '');    // strip spaces
+        clean_email = clean_email.replace(/\s$/g, '');      // strip trailing spaces
+        clean_email = clean_email.replace(/^\s/g, '');      // strip strip leading spaces
+
+        // CLEAN PW (strip out spaces)
+        var clean_pwd = input_pwd;
+        clean_pwd = clean_pwd.replace(/\s\s+/g, '');        // strip spaces
+        clean_pwd = clean_pwd.replace(/\s$/g, '');          // strip trailing spaces
+        clean_pwd = clean_pwd.replace(/^\s/g, '');          // strip leading spaces
+
+        console.log('clean username: ' + clean_email + ', clean password: ' + clean_pwd);
+
+        $.ajax({
+            method: 'POST',
+            url: '/api/signup',
+            data: {email: clean_email, password: clean_pwd},
+            success: function(data, status, jqxhr) {
+                handle_response(jqxhr, data, document.getElementById('resultDiv'));
+            },
+            error: function(jqxhr, status, err) {
+                handle_response(jqxhr, err, document.getElementById('resultDiv'));
+            }
+        });
+    }
+
+    function submit_login(input_email, input_pwd){
+        // CLEAN EMAIL
+        var clean_email = input_email;
+        clean_email = clean_email.replace(/\\/g, '');       // strip backslashes
+        clean_email = clean_email.replace(/\{\}/g, '');     // strip backslashes (again?)
+        clean_email = clean_email.replace(/\s\s+/g, '');    // strip spaces
+        clean_email = clean_email.replace(/\s$/g, '');      // strip trailing spaces
+        clean_email = clean_email.replace(/^\s/g, '');      // strip strip leading spaces
+
+        // CLEAN PW (strip out spaces)
+        var clean_pwd = input_pwd;
+        clean_pwd = clean_pwd.replace(/\s\s+/g, '');        // strip spaces
+        clean_pwd = clean_pwd.replace(/\s$/g, '');          // strip trailing spaces
+        clean_pwd = clean_pwd.replace(/^\s/g, '');          // strip leading spaces
+
+        console.log('clean username: ' + input_email + ', clean password: ' + input_pwd);
+
+        $.ajax({
+            method: 'POST',
+            url: '/api/authenticate',
+            data: {email: clean_email, password: clean_pwd},
+            success: function(data, status, jqxhr) {
+                handle_response(jqxhr, data, document.getElementById('resultDiv2'));
+            },
+            error: function(jqxhr, status, err) {
+                handle_response(jqxhr, err, document.getElementById('resultDiv2'));
+            }
+        });
+    }
+
+
+    // EVENTS --------------------
+
+    // MAIN LOOP
+    window.addEventListener('load', function(e){
+        //create_signup_page(document.getElementById('resultDiv'));
+    });
+
+    // TEMP LOGIN LOGIC
+    var form = document.getElementById('loginForm');
+    var button = document.getElementById('submitButton');
+    var clear_cookie_button = document.getElementById('clear_cookie_button');
+    var check_credentials_button = document.getElementById('check_credentials_button');
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        document.getElementById('resultDiv2').innerHTML = '';   //clear the page
+        submit_login(document.getElementById('login_email').value, document.getElementById('login_password').value);
+    });
+
+    // TODO: remove this and make a 'logout' button.
+    clear_cookie_button.addEventListener('click', function(e){
+        e.preventDefault();
+
+        $.ajax({
+            method: 'GET',
+            url: '/api/clearcookie',
+            success: function(data, status, jqxhr) {
+                console.log('cookie cleared. ');
+            },
+            error: function(jqxhr, status, err){
+                console.log('failed to clear cookie.');
+            }
+
+        });
+    });
+
+    // CHECK CREDENTIALS
+    // TODO: remove this, should be done automatically.
+    check_credentials_button.addEventListener('click', function(e){
+        e.preventDefault();
+
+        $.ajax({
+            method: 'GET',
+            url: 'api/debug',
+            success: function(data, status, jqxhr){
+                console.log('Checked credentials. ');
+                console.log(data.payload.user);   //chhanged from payuload to status.
+                handle_response(jqxhr, data, document.getElementById('resultDiv4'));
+            },
+            error: function(jqxhr, status, err){
+                console.log('AJAX error!');
+                handle_response(jqxhr, err, document.getElementById('resultDiv4'));
+            }
+        })
+    });
+
+
+
+
+
+</script>
+
+</body>
+</html>
