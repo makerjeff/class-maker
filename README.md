@@ -1,6 +1,10 @@
-#Lunch Run MVP
-LunchRun minimum viable prototype.
+#Class Maker MVP
+Class Maker MVP.
 
-##Notes
+## Technology
+Node/Express, Bootstrap, Sass, JQuery.
+
+## Notes
+
 
 ##References

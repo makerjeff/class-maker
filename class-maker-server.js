@@ -1,6 +1,6 @@
 /**
- * Official-ish Lunch Run Server on HTTPS.
- * Created by jeffersonwu on 3/22/17.
+ * Officialish Class-Maker Server on HTTPS.
+ * Created by jeffersonwu on 3/27/17.
  */
 
 // ====================
@@ -73,7 +73,7 @@ mongoose.connection.on('disconnected', function(){
 // --- powered by ---
 // --- silly headers ---
 app.use(function(req, res, next){
-    res.setHeader('X-Powered-By', 'Monkeys in Space v0.0.1');
+    res.setHeader('X-Powered-By', 'Monkeys in the Earth Crust v0.0.1');
     next();
 });
 
@@ -93,20 +93,20 @@ app.use(function(req, res, next){
 // --- auth checker ---
 //TODO: working, but obscuring everything.
 // TODO: create another Router object for sensitive data put this in there.
-app.use(function(req, res, next) {
-    token_to_verify = req.signedCookies.token;
-    console.log('Token in signed cookie: ' + chalk.blue(token_to_verify));
-
-    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded){
-        if(err) {
-            console.log('error verifying token. ');
-            res.status(403);
-            res.sendfile(process.cwd() + '/public/login.html');
-        } else {
-            next();
-        }
-    });
-});
+// app.use(function(req, res, next) {
+//     token_to_verify = req.signedCookies.token;
+//     console.log('Token in signed cookie: ' + chalk.blue(token_to_verify));
+//
+//     jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded){
+//         if(err) {
+//             console.log('error verifying token. ');
+//             res.status(403);
+//             res.sendfile(process.cwd() + '/public/login.html');
+//         } else {
+//             next();
+//         }
+//     });
+// });
 
 // =====================
 // ROUTES ==============
