@@ -1,0 +1,61 @@
+// ================================
+// ALERT MODAL STYLES =============
+// ================================
+// For popup alerts
+
+.alert_modal {
+  position: relative;
+  width: 90%;
+  height: auto;
+  //top: 10px;
+  left: 50%;
+  margin: 5px 0 5px 0;
+  padding: 10px;
+  transform: translate(-50%, 0);
+  background: $success_bg_color;
+  border: 3px solid $success_border_color;
+  color: $success_content_color;
+  border-radius: 5px;
+  box-sizing: border-box;
+  animation-name: fade_in;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+.alert_modal > .alert_modal_close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.alert_modal_close:hover {
+  color: white; // temp color, find a lighter green.
+}
+
+.alert_modal > p {
+  color: $success_content_color;
+}
+@keyframes fade_in {
+  0% {  opacity: 0;  }
+  100% {  opacity: 100;  }
+}
+
+// ====== EXPERIMENTING WITH MODULAR ALERT MODAL ======
+
+.type_success {
+  background: $success_bg_color;
+  border: 3px solid $success_border_color;
+  color: $success_content_color;
+}
+
+.type_warning {
+  background: $warning_bg_color;
+  border: 3px solid $warning_border_color;
+  color: $warning_content_color;
+}
+
+.type_error {
+  background: $error_bg_color;
+  border: 3px solid $error_border_color;
+  color: $error_content_color;
+}

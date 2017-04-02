@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Builder</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="/images/favicon.ico?v=1">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Lato', Arial, sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            /*padding: 10px;*/
+        }
+
+
+        .menu {
+            display: block;
+            position: absolute;
+            width: 200px;
+            height: auto;
+
+        }
+
+        .menu > ul {
+            display: block;
+        }
+
+        .menu > ul > li {
+            padding: 10px 20px 10px 20px;
+            background: rgb(100,100,100);
+            cursor: pointer;
+        }
+
+        .menu > ul > li:hover {
+            background: rgb(150,150,150);
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+<div id="container" class="container">
+
+    <div id="menu" class="menu">
+        <ul>
+            <li>item one</li>
+            <li>item two</li>
+            <li>item three</li>
+            <li>item four</li>
+            <li>item five</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+
+
+</script>
+
+</body>
+</html>

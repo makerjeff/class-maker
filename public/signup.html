@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Class Maker</title>
+    <title>Class Maker - Signup</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico?v=1">
+
+
 </head>
 <body>
 
 <!-- THIS HIDES AND SHOWS VEIL -->
-<!--TODO: find another fix, as this doesn't work on android.-->
-<!--<div id="landscape_veil" class="landscape_veil"><h2>Turn your phone please.</h2></div>-->
+<!--<div id="landscape_veil" class="landscape_veil"> <h2>Turn your phone please. </h2></div>-->
 
 <!-- NAVIGATION -->
 <nav id="toolbar" class="toolbar">
@@ -26,20 +28,24 @@
 
     <!-- TITLE -->
     <div id="title1" class="title">
-        <h2>LOGIN</h2>
+        <h2>SIGNUP</h2>
     </div>
 
     <!-- FORM -->
-    <form id="loginForm" class="loginForm">
-        <label for="login_email">email</label>
-        <input id="login_email" type="email" name="login_email" autocomplete="on" placeholder="email address" required> <br>
+    <form id="signup_form" class="loginForm">
+        <label for="signup_email">email</label>
+        <input id="signup_email" type="email" name="signup_email" autocomplete="on" placeholder="email address" required> <br>
 
-        <label for="login_password">password</label>
-        <input id="login_password" type="password" name="login_password" placeholder="password" required> <br> <br>
+        <label for="signup_password">password</label>
+        <input id="signup_password" type="password" name="signup_password" placeholder="password" required> <br>
 
-        <button id="login_button" class="button"> Login</button>
+        <label for="confirm_signup_password"> confirm password </label>
+        <input id="confirm_signup_password" type="password" name="confirm_signup_password" placeholder="confirm password" required> <br> <br>
 
-        <p><a href="/signup"> or sign up for an account</a></p>
+
+        <button id="signup_button" class="button"> Signup</button>
+
+        <p><a href="/"> or login to your account</a></p>
     </form>
 
     <div id="resultDiv" class="resultDiv">
@@ -47,10 +53,10 @@
 
 </div>
 
-<!-- LOAD MAIN SCRIPTS -->
+<!-- LOGICS -->
 <script src="js/AlertModalMaker.js"></script>
 <script src="js/main.js"></script>
-<script src="js/logic_login.js"></script>
+<script src="js/logic_signup.js"></script>
 
 </body>
 </html>

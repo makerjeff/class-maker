@@ -1,0 +1,25 @@
+/* ================================
+ * GLOBAL COLORS ==================
+ * ================================
+ * All the colors of the app are here.
+*/
+
+// primary app colors.
+$primary_app_color: #5347ff;
+$error: #FF2C00;
+$warning: #FFB300;
+
+// success alert indicator colors.
+$success_border_color: rgb(100,210,100);
+$success_bg_color: rgb(200,255,200);
+$success_content_color: rgb(5, 170, 3);
+
+// warning alert indicator colors.
+$warning_border_color: rgb(210, 209, 126);
+$warning_bg_color: rgb(255, 249, 196);
+$warning_content_color: rgb(170, 158, 6);
+
+// error alert indicator colors.
+$error_border_color: rgb(210, 131, 124);
+$error_bg_color: rgb(255, 213, 211);
+$error_content_color: rgb(170, 10, 21);

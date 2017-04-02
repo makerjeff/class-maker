@@ -50,7 +50,7 @@ const port              = process.env.PORT || 3443;
 const token_duration    = '15m';
 
 // mongoose setup and events
-mongoose.connect('mongodb://localhost/lrdb');  //experimental db
+mongoose.connect('mongodb://localhost/class-maker');  //experimental db
 
 mongoose.connection.on('error', function(err){
     console.error('connection error: ' + err);
@@ -115,7 +115,29 @@ app.use(function(req, res, next){
 app.get('/', function(req, res){
     // res.send("<h1>YAY-P-I</h1> <p>Welcome to the host page.  To use the api, use the route api/:route</p>");
     console.log('Entry into site.');
-    res.sendFile(process.cwd() + '/public/index.html');
+
+    token_to_verify = req.signedCookies.token;
+    console.log('Token in signed cookie: ' + chalk.blue(token_to_verify));
+
+    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded){
+        if(err) {
+            console.log('error verifying token. Send Login page.');
+            res.status(403);
+            res.sendFile(process.cwd() + '/public/login.html');
+        } else {
+            console.log('token verified. ');
+            res.status(200);
+            res.sendFile(process.cwd() + '/public/index.html');
+        }
+    });
+});
+
+app.get('/signup', function (req, res){
+    console.log('Signup page sent.');
+
+    res.status(200);
+    res.sendFile(process.cwd() + '/public/signup.html');
+
 });
 
 
@@ -234,7 +256,7 @@ router.post('/authenticate', function(req, res){
 
                         } else {
                             res.status(401);
-                            res.json({status: 'failed', payload: {message: 'user password does not match. '}});
+                            res.json({status: 'error', payload: {message: 'user password does not match. '}});
                         }
                     }
                 });
@@ -280,9 +302,20 @@ router.post('/signup', function(req, res){
                         // properly saved, now create JWT and set cookie.
                         res.status(201);
                         console.log('new user saved.');
-                        res.send('new user saved.');
+                        //res.send('new user saved.');
 
-                        //TODO: Create JWT, using encapsulated function from above.
+                        //TODO: Create Token and redirect.
+                        jwt.sign({user: req.body.email, friends: ['i', 'have', 'no', 'friends']}, tokencreds.jwtSecret, {expiresIn: token_duration}, function(err, token) {
+                            if (err) {
+                                res.status(500);
+                                res.send('Error creating token. Contact your administrator. ');
+                            } else {
+                                console.log('token created on signup: ' + chalk.yellow(token));
+                                res.status(201);
+                                res.cookie('token', token, {signed: true, httpOnly: true});
+                                res.json({status: 'success', payload: {message:' autho cookie set. ', token: token}});
+                            }
+                        });
                     }
                 });
 
@@ -290,7 +323,8 @@ router.post('/signup', function(req, res){
             } else {
                 console.log('user already exists!');
                 res.status(409);
-                res.send('user already exists!');
+                //res.send('user already exists!');
+                res.json({status: 'failed', payload: {message: 'User already exists!'}});
 
                 //TODO: res.json error message.
             }

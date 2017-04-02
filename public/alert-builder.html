@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modal Builder</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="/images/favicon.ico?v=1">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Lato', Arial, sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            /*padding: 10px;*/
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+
+<div id="container" class="container">
+
+    <button>Add a sucess modal</button>
+    <button>Add a warning modal</button>
+    <button>Add an error modal</button>
+
+
+    <!--<div id="alert_modal" class="alert_modal">-->
+        <!--<p>Message to display to infinity and beyond you mother fucking ass prick! Keep typing</p>-->
+        <!--<p>And let's see if this properly moves down to the next line.</p>-->
+        <!--<div class="alert_modal_close fa fa-times"></div>-->
+    <!--</div>-->
+
+
+</div>
+
+<!-- LOAD AlertModalMaker module -->
+<script src="js/AlertModalMaker.js"></script>
+
+<script>
+
+    var buttons = document.getElementsByTagName('button');
+
+    buttons[0].addEventListener('click', function(e){
+        AlertModalMaker.create('success', 'This is a successful message!', document.getElementById('container'));
+    });
+
+    buttons[1].addEventListener('click', function(e){
+        AlertModalMaker.create('warning', 'This is a warning message!', document.getElementById('container'));
+    });
+
+    buttons[2].addEventListener('click', function(e){
+        AlertModalMaker.create('error', 'This is an error message!', document.getElementById('container'));
+    });
+
+</script>
+
+</body>
+</html>
