@@ -6,6 +6,7 @@
 @import 'input_alerts';
 @import 'alert_modals';
 @import 'toolbar';
+@import 'student_view';
 
 
 // =======================
@@ -21,6 +22,8 @@
 
   width: 80vw;
   height: 250px;
+
+  max-width: 640px;
 
   /*background: grey;*/
 }

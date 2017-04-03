@@ -18,10 +18,8 @@
   position: fixed;
   width: 220px;
   height: auto;
-
   right: 20px;
   top: 10px;
-
   border: 1px solid rgb(200,200,200);
   z-index: 501;
 }
@@ -33,13 +31,13 @@
 
 .menu > ul > li {
   padding: 10px 20px 10px 20px;
-  background: rgb(240,240,240);
+  background: rgb(255,255,255);
   cursor: pointer;
   text-decoration: none;
 }
 
 .menu > ul > li:hover {
-  background: rgb(230,230,230);
+  background: rgb(240,240,240);
 }
 
 .menu > ul > li:first-child {
