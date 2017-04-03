@@ -1,0 +1,65 @@
+/* ================================
+ * TOOLBAR STYLES =================
+ * ================================
+ * Menu toolbar styles and CSS logic.
+*/
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translate(0, -50%);
+  font-size: 1.75em;
+  color: white;
+}
+
+.menu {
+  display: block;
+  position: fixed;
+  width: 220px;
+  height: auto;
+
+  right: 20px;
+  top: 10px;
+
+  border: 1px solid rgb(200,200,200);
+  z-index: 501;
+}
+
+.menu > ul {
+  display: block;
+  list-style-type: none;
+}
+
+.menu > ul > li {
+  padding: 10px 20px 10px 20px;
+  background: rgb(240,240,240);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.menu > ul > li:hover {
+  background: rgb(230,230,230);
+}
+
+.menu > ul > li:first-child {
+  color: rgb(175,175,175);
+}
+
+.menu > ul > li:last-child {
+  border-top: 1px solid rgb(200,200,200);
+}
+
+.modal_veil {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top:0;
+  left: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 500;
+}
+
+.hide {
+  display: none;
+}

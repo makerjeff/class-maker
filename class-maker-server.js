@@ -185,22 +185,46 @@ router.get('/clearcookie', function(req, res) {
 });
 
 // EXPERIMENTAL
-router.get('/debug', function(req, res){
+// router.get('/debug', function(req, res){
+//
+//     token_to_verify = req.signedCookies.token;
+//     console.log('Token in signed cookie: ' + chalk.blue(token_to_verify));
+//      // check token.
+//     jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded){
+//         if(err) {
+//             console.log('error verifying token. ');
+//             res.status(403);
+//             res.send('Error verifying token. ');
+//         } else {
+//
+//             res.status(200);
+//             console.log('Your user object: ' + decoded);
+//
+//             for (prop in decoded) {
+//                 console.log(prop + ': ' + decoded[prop]);
+//             }
+//
+//             res.json({status: 'success', payload: {message: 'User ID sent. ', user: decoded.user, friends: decoded.friends}});
+//         }
+//     });
+// });
+
+router.get('/user_data', function(req, res){
 
     token_to_verify = req.signedCookies.token;
-    console.log('Token in signed cookie: ' + chalk.blue(token_to_verify));
+    console.log('Token in signed cookie:' + chalk.blue(token_to_verify));
 
-    // TODO: WRAP THIS INTO A "CHECK TOKEN" FUNCTION
-    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded){
+    //TODO: check token
+    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded) {
         if(err) {
             console.log('error verifying token. ');
             res.status(403);
             res.send('Error verifying token. ');
         } else {
-
             res.status(200);
             console.log('Your user ID: ' + decoded);
 
+            // debug output to console.
             for (prop in decoded) {
                 console.log(prop + ': ' + decoded[prop]);
             }

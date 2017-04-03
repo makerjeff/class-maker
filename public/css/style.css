@@ -21,6 +21,9 @@ html, body {
 h2 {
   font-size: 1.5em; }
 
+h3 {
+  font-size: 1.3em; }
+
 input {
   width: 100%;
   padding: 12px 20px;
@@ -30,14 +33,6 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 1.5em; }
-
-.logo {
-  position: absolute;
-  top: 50%;
-  left: 30px;
-  transform: translate(0, -50%);
-  font-size: 1.75em;
-  color: white; }
 
 .button {
   width: 100%;
@@ -51,17 +46,17 @@ input {
   font-size: 1.5em; }
 
 .container {
-  position: fixed;
-  /*use this to float on top, disable scroll, and offscreen non-hidden*/
-  width: 100vw;
-  height: 100vh;
-  /*background: rgba(255,200,200,1);*/ }
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /*padding: 10px;*/ }
 
 .title {
   position: absolute;
   top: 100px;
   left: 50%;
-  font-size: 1.5em;
+  font-size: 1.25em;
   transform: translate(-50%, 0); }
 
 .wrong {
@@ -119,6 +114,60 @@ input {
   border: 3px solid #d2837c;
   color: #aa0a15; }
 
+/* ================================
+ * TOOLBAR STYLES =================
+ * ================================
+ * Menu toolbar styles and CSS logic.
+*/
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translate(0, -50%);
+  font-size: 1.75em;
+  color: white; }
+
+.menu {
+  display: block;
+  position: fixed;
+  width: 220px;
+  height: auto;
+  right: 20px;
+  top: 10px;
+  border: 1px solid #c8c8c8;
+  z-index: 501; }
+
+.menu > ul {
+  display: block;
+  list-style-type: none; }
+
+.menu > ul > li {
+  padding: 10px 20px 10px 20px;
+  background: #f0f0f0;
+  cursor: pointer;
+  text-decoration: none; }
+
+.menu > ul > li:hover {
+  background: #e6e6e6; }
+
+.menu > ul > li:first-child {
+  color: #afafaf; }
+
+.menu > ul > li:last-child {
+  border-top: 1px solid #c8c8c8; }
+
+.modal_veil {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 500; }
+
+.hide {
+  display: none; }
+
 .loginForm {
   position: absolute;
   top: 50%;
@@ -144,6 +193,7 @@ input {
   right: 30px;
   top: 50%;
   transform: translate(0, -50%);
+  cursor: pointer;
   z-index: 101; }
 
 .hide {

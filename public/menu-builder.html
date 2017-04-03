@@ -28,57 +28,31 @@
 
             /*padding: 10px;*/
         }
-
-
-        .menu {
-            display: block;
-            position: absolute;
-            width: 200px;
-            height: auto;
-
-        }
-
-        .menu > ul {
-            display: block;
-        }
-
-        .menu > ul > li {
-            padding: 10px 20px 10px 20px;
-            background: rgb(100,100,100);
-            cursor: pointer;
-        }
-
-        .menu > ul > li:hover {
-            background: rgb(150,150,150);
-        }
-
-
-
-
-
     </style>
 </head>
 <body>
 
+<nav id="toolbar" class="toolbar">
+    <div id="logo" class="logo">Class Maker</div>
+    <div id="menuButton" class="menuButton fa fa-bars"></div>
+</nav>
 
+
+<!-- MAIN MENU -->
 <div id="container" class="container">
-
     <div id="menu" class="menu">
         <ul>
-            <li>item one</li>
-            <li>item two</li>
-            <li>item three</li>
-            <li>item four</li>
-            <li>item five</li>
+            <li class="menu_item">Profile</li>
+            <li class="menu_item">Settings</li>
+            <li class="menu_item">Help</li>
+            <li class="menu_item">Log Out</li>
         </ul>
     </div>
-
+    <div class="modal_veil"></div>
 </div>
+<!-- MAIN MENU - END -->
 
-<script>
-
-
-</script>
+<script src="js/logic_toolbar.js"></script>
 
 </body>
 </html>
