@@ -35,6 +35,9 @@
             border-bottom: 1px solid black;
             padding: 10px;
         }
+        input[type=text]:focus {
+            outline: none;
+        }
 
         button {
             margin: 10px;
@@ -123,6 +126,10 @@
         <input name="science" type="radio" value="10"> (great)
     <br> <br>
 
+    <!--ELA-->
+    <!--AR LEVEL-->
+    <!--ELD-->
+
 
     <div>
         <button id="cancel_button">Cancel</button>
@@ -146,10 +153,12 @@
     });
 
     cancel_button.onclick = function(e) {
+        e.preventDefault();
         console.log('Cancel button clicked. ');
     };
 
     submit_button.onclick = function(e) {
+        e.preventDefault();
         console.log('Form submit button clicked. ');
         update_student();
     };

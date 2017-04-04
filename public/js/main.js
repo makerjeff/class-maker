@@ -154,6 +154,39 @@ function submit_login(input_email, input_pwd){
     });
 }
 
+// STUDENTS --------------------
+/**
+ * Submit new Student data to the API.
+ * @param student_id   Student ID.
+ * @param firstname     Student first name.
+ * @param lastname      Student last name.
+ * @param stats_object  Object that houses student stats.
+ */
+function submit_new_student(student_id, firstname, lastname, stats_object) {
+
+    $.ajax({
+        method: 'POST',
+        url: '/signup',
+        data: {
+            student_id: student_id,
+            firstname: firstname,
+            lastname: lastname,
+            stats: {
+                behavior: stats_object.behavior,
+                math: stats_object.math,
+                english: stats_object.english,
+                science: stats_object.science
+            }
+        },
+        success: function(data, status, jqxhr) {
+            handle_response(jqxhr, data, document.getElementById('resultDiv'));
+        },
+        error: function(jqxhr, status, err) {
+            handle_response(jqxhr, err, document.getElementById('resultDiv'));
+        }
+    });
+}
+
 
 // EVENTS --------------------
 

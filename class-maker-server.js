@@ -38,6 +38,7 @@ const crypto            = require('./modules/crypto');
 
 const User              = require('./models/User');
 const Bear              = require('./models/Bear');
+const Student           = require('./models/Student');
 
 // ====================
 // CONFIGURATION ======
@@ -112,6 +113,7 @@ app.use(function(req, res, next){
 // ROUTES ==============
 // =====================
 
+// MAIN PAGE
 app.get('/', function(req, res){
     // res.send("<h1>YAY-P-I</h1> <p>Welcome to the host page.  To use the api, use the route api/:route</p>");
     console.log('Entry into site.');
@@ -132,14 +134,132 @@ app.get('/', function(req, res){
     });
 });
 
-app.get('/signup', function (req, res){
-    console.log('Signup page sent.');
+// SEED Students
+app.get('/seed_students', function(req, res) {
+    new Student({user: 'jefferson.wu@180la.com', student_id: 1234567890, firstname: 'jeff', lastname: 'wu', stats: {behavior: 5, math: 3, english: 5, science: 2}}).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
 
-    res.status(200);
-    res.sendFile(process.cwd() + '/public/signup.html');
+    new Student({user: 'jefferson.wu@180la.com', student_id: 1987654321, firstname: 'shirley', lastname: 'yang', stats: {behavior: 2, math: 5, english: 5, science: 1}}).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
 
+    new Student({user: 'jefferson.wu@180la.com', student_id: 1234554331, firstname: 'wynbert', lastname: 'gan', stats: {behavior: 7, math: 1, english: 1, science: 2} }).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+
+    new Student({user: 'jefferson.wu@180la.com', student_id: 5432154321, firstname: 'valeree', lastname: 'tan', stats: {behavior: 5, math: 3, english: 5, science: 2}}).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+    res.send('jefferson.wu180la.com things seeded.');
 });
 
+app.get('/seed_students_jacob', function(req, res) {
+    new Student({user: 'jacob@gmail.com', student_id: 1234567890, firstname: 'jacob', lastname: 'wu', stats: {behavior: 5, math: 3, english: 5, science: 2}}).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+
+    new Student({user: 'jacob@gmail.com', student_id: 1987654321, firstname: 'jacob', lastname: 'yang', stats: {behavior: 2, math: 5, english: 5, science: 1}}).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+
+    new Student({user: 'jacob@gmail.com', student_id: 1234554331, firstname: 'jacob', lastname: 'gan', stats: {behavior: 7, math: 1, english: 1, science: 2} }).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+
+    new Student({user: 'jacob@gmail.com', student_id: 5432154321, firstname: 'jacob', lastname: 'tan', stats: {behavior: 5, math: 3, english: 5, science: 2}}).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+    res.send('jacob@gmail.com things seeded.');
+});
+
+app.get('/seed_students_jiff', function(req, res) {
+    new Student({user: 'jiffwoovideo@gmail.com', student_id: 1234567890, firstname: 'jiff', lastname: 'wu', stats: {behavior: 5, math: 3, english: 5, science: 2}}).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+
+    new Student({user: 'jiffwoovideo@gmail.com', student_id: 1987654321, firstname: 'jiff', lastname: 'yang', stats: {behavior: 2, math: 5, english: 5, science: 1}}).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+
+    new Student({user: 'jiffwoovideo@gmail.com', student_id: 1234554331, firstname: 'jiff', lastname: 'gan', stats: {behavior: 7, math: 1, english: 1, science: 2} }).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+
+    new Student({user: 'jiffwoovideo@gmail.com', student_id: 5432154321, firstname: 'jiff', lastname: 'tan', stats: {behavior: 5, math: 3, english: 5, science: 2}}).save(function(err){
+        if(err) {
+            console.log('error saving to database. ' + err);
+            res.send('error saving to database. ');
+        } else {
+            console.log('first object saved.');
+        }
+    });
+    res.send('jiffwoovideo@gmail.com things seeded.');
+});
+
+// SIGNUP PAGE
+app.get('/signup', function (req, res){
+    console.log('Signup page sent.');
+    res.status(200);
+    res.sendFile(process.cwd() + '/public/signup.html');
+});
+
+// GLOBAL AUTHENTICATE
 app.post('/authenticate', function(req, res){
     console.log('/authenticate route hit. ');
 
@@ -196,7 +316,7 @@ app.post('/authenticate', function(req, res){
     });
 });
 
-// TODO: API: signup. Creates new user and returns JWT as a cookie as well as a payload.
+// SIGNUP + AUTHENTICATE IN ONE PASS
 app.post('/signup', function(req, res){
     //DEBUG
     console.log(req.body.email + ' ' + req.body.password);
@@ -211,10 +331,6 @@ app.post('/signup', function(req, res){
 
         } else {
 
-            // check to see if the user found is null... if it is, there's no user so save away.
-            //console.log('user found: ' + result);
-            //res.send('user found: '+ result);
-
             if(result == null) {
 
                 new User({email: req.body.email, password: req.body.password}).save(function(err){
@@ -225,7 +341,6 @@ app.post('/signup', function(req, res){
                         // properly saved, now create JWT and set cookie.
                         res.status(201);
                         console.log('new user saved.');
-                        //res.send('new user saved.');
 
                         //TODO: Create Token and redirect.
                         jwt.sign({user: req.body.email, friends: ['i', 'have', 'no', 'friends']}, tokencreds.jwtSecret, {expiresIn: token_duration}, function(err, token) {
@@ -242,19 +357,15 @@ app.post('/signup', function(req, res){
                     }
                 });
 
-
             } else {
                 console.log('user already exists!');
                 res.status(409);
                 //res.send('user already exists!');
                 res.json({status: 'failed', payload: {message: 'User already exists!'}});
-
-                //TODO: res.json error message.
             }
         }
     });
 });
-
 
 
 // === CUSTOM ROUTER OBJECT ====
@@ -268,7 +379,7 @@ router.use(function(req, res, next){
     next();
 });
 
-//TODO: this will only work when 'authenticate' route is moved out of /api
+// API AUTH CHECKER
 router.use(function(req, res, next) {
     token_to_verify = req.signedCookies.token;
     console.log('Token in signed cookie:' + chalk.blue(token_to_verify));
@@ -408,8 +519,6 @@ router.post('/signup', function(req, res){
         } else {
 
             // check to see if the user found is null... if it is, there's no user so save away.
-            //console.log('user found: ' + result);
-            //res.send('user found: '+ result);
 
             if(result == null) {
 
@@ -461,6 +570,50 @@ router.post('/signup', function(req, res){
 
 router.get('/student', function(req, res){
 
+    // Search for all students in the database.
+
+    token_to_verify = req.signedCookies.token;
+    console.log('Token in signed cookie:' + chalk.blue(token_to_verify));
+
+    //TODO: check token
+    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded) {
+        if(err) {
+            console.log('error verifying token. ');
+            res.send('failed.');
+        } else {
+            console.log('Your user ID: ' + decoded.user + ' ' + decoded.friends);
+
+            Student.find({user: decoded.user}, function(err, result){
+                if (err) {
+                    console.log('error finding students. ');
+                    console.log(err);
+                    res.send('no student found. ');
+                } else {
+                    result.forEach(function(elem,ind,arr){
+                        console.log(elem);
+                    });
+
+                    res.json({status: 'success', payload: {message: 'Students found.', students: result}});
+                }
+            });
+        }
+    });
+});
+
+router.post('/student', function(req, res) {
+
+    token_to_verify = req.signedCookies.token;
+    console.log('Token in signed cookie:' + chalk.blue(token_to_verify));
+
+    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded) {
+        if(err) {
+            console.log('error verifying token. ');
+            res.send('failed.');
+        } else {
+            console.log('Your user ID: ' + decoded.user + ' ' + decoded.friends);
+
+        }
+    });
 });
 
 
@@ -507,3 +660,25 @@ httpsServer.listen(port, function(err){
 // =======================
 // CUSTOM FUNCTIONS ======
 // =======================
+function check_and_return_token(req) {
+
+    token_to_verify = req.signedCookies.token;
+    console.log('Token in signed cookie:' + chalk.blue(token_to_verify));
+
+    //TODO: check token
+    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded) {
+        if(err) {
+            console.log('error verifying token. ');
+            return null;
+        } else {
+            console.log('Your user ID: ' + decoded.user + ' ' + decoded.friends);
+
+            var output = decoded;
+            console.log('from within jwt callback: ' + output.user);
+
+            return output;
+        }
+    });
+
+
+}
