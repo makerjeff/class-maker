@@ -629,11 +629,42 @@ router.post('/student', function(req, res) {
                     res.send('error saving to database. ');
                 } else {
                     console.log(chalk.yellow('added ' + decoded.user + ' ' + req.body.student_id));
-                    res.send('(TEMP) student added. ');
+                    res.send('Added Student ' + req.body.student_id);
                 }
             });
         }
     });
+});
+
+router.put('/student', function(req, res) {
+    token_to_verify = req.signedCookies.token;
+    console.log('Token in signed cookie:' + chalk.blue(token_to_verify));
+
+    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded) {
+        if(err) {
+            console.log('error verifying token. ');
+            res.send('failed.');
+        } else {
+            // console.log('Your user ID: ' + decoded.user + ' ' + decoded.friends);
+
+            console.log('checking: ' + chalk.yellow(req.body.user));
+
+            var query = {user: decoded.user, student_id: req.body.student_id, firstname: req.body.student_firstname, lastname: req.body.student_lastname};
+            var update = {user: decoded.user, student_id: req.body.student_id, firstname: req.body.student_firstname, lastname: req.body.student_lastname, stats: {behavior:req.body.student_behavior, math:req.body.student_math, english:req.body.student_english, science:req.body.student_science}};
+
+            Student.update(query, update, function(err, user) {
+                if (err) {
+                    console.log('error updating database. ' + err);
+                    res.send('error updating to database. ');
+                } else {
+                    console.log(chalk.yellow('updated ' + decoded.user + ' ' + req.body.student_id));
+                    res.json({status:'success', payload: {message: 'updated. ', data: update}});
+
+                }
+            });
+        }
+    });
+
 });
 
 // STUDENT - GET (INDIVIDUAL)

@@ -177,6 +177,33 @@
                 console.log(div.id);
 
                 //TODO: wrap into an 'update' function.
+//                set_student_input_form_values(
+//                    div.id, data_object[ind].firstname,
+//                    data_object[ind].lastname,
+//                    data_object[ind].stats.behavior,
+//                    data_object[ind].stats.math,
+//                    data_object[ind].stats.english,
+//                    data_object[ind].stats.science
+//                );
+
+                console.log(data_object[ind].stats.behavior);
+
+                // catch the zeros
+                if(data_object[ind].stats.behavior == 0) {data_object[ind].stats.behavior = 1;}
+                if(data_object[ind].stats.math == 0) {data_object[ind].stats.math = 1;}
+                if(data_object[ind].stats.english == 0) {data_object[ind].stats.english = 1;}
+                if(data_object[ind].stats.science == 0) {data_object[ind].stats.science = 1;}
+
+
+
+                set_student_input_form_values(div.id, data_object[ind].firstname,
+                    data_object[ind].lastname,
+                    data_object[ind].stats.behavior,
+                    data_object[ind].stats.math,
+                    data_object[ind].stats.english,
+                    elem.stats.science);
+
+                toggle_student_input_modal();
             };
 
             // APPENDS -------
@@ -220,6 +247,40 @@
         }
     }
 
+    function clear_student_input_form_values() {
+        document.getElementById('student_id_input').value = '';
+        document.getElementById('student_firstname_input').value = '';
+        document.getElementById('student_lastname_input').value = '';
+
+        $('input[name=behavior]:checked').prop('checked', false);
+        $('input[name=math]:checked').prop('checked', false);
+        $('input[name=english]:checked').prop('checked', false);
+        $('input[name=science]:checked').prop('checked', false);
+    }
+
+    function set_student_input_form_values(student_id, firstname, lastname, behavior, math, english, science) {
+        document.getElementById('student_id_input').value = student_id;
+        document.getElementById('student_firstname_input').value = firstname;
+        document.getElementById('student_lastname_input').value = lastname;
+
+//        $('input[name=behavior]')[parseInt(behavior)-1].checked = true;
+//        $('input[name=math]:checked')[parseInt(math)-1].checked = true;
+//        $('input[name=english]:checked')[parseInt(english)-1].checked = true;
+//        $('input[name=science]:checked')[parseInt(science)-1].checked = true;
+
+        $('input[name=behavior]')[behavior-1].checked = true;
+        $('input[name=math]')[math-1].checked = true;
+        $('input[name=english]')[english-1].checked = true;
+        $('input[name=science]')[science-1].checked = true;
+
+        // TODO: must override 'save' button to launch an 'update' function.
+        student_form_save_button.innerHTML = 'update';
+        student_form_save_button.onclick = function(e) {
+            e.preventDefault();
+            update_student();
+        };
+    }
+
     function add_new_student() {
         var student_id = document.getElementById('student_id_input').value;
         var student_firstname = document.getElementById('student_firstname_input').value;
@@ -237,10 +298,10 @@
             student_id: parseInt(student_id),
             student_firstname: student_firstname,
             student_lastname: student_lastname,
-            student_behavior: parseInt(student_behavior) || 0,
-            student_math: parseInt(student_math) || 0,
-            student_english: parseInt(student_english) || 0,
-            student_science: parseInt(student_science) || 0
+            student_behavior: parseInt(student_behavior) || 1,
+            student_math: parseInt(student_math) || 1,
+            student_english: parseInt(student_english) || 1,
+            student_science: parseInt(student_science) || 1
         };
 
         console.log(send_object);
@@ -253,7 +314,57 @@
                 console.log('successfully added student, refreshing page.');
 
                 // TODO:
-//                refresh_view();
+                refresh_view();
+            },
+            error: function(jqxhr, status, err) {
+                console.log('error saving student.' + err);
+            }
+
+        });
+    }
+
+    // user, student_id, firstname, lastname (all these to identify student)
+    function update_student() {
+
+        //TODO: STORE CURRENT DATA FOR SEARCH.
+        //TODO: STORE NEW DATA FOR UPDATE.
+
+        console.log('TODO: update student with PUT. ');
+
+        var student_id = document.getElementById('student_id_input').value;
+        var student_firstname = document.getElementById('student_firstname_input').value;
+        var student_lastname = document.getElementById('student_lastname_input').value;
+
+        var student_behavior = $('input[name=behavior]:checked').val();
+        var student_math = $('input[name=math]:checked').val();
+        var student_english = $('input[name=english]:checked').val();
+        var student_science = $('input[name=science]:checked').val();
+
+        //DEBUG
+
+        send_object = {
+            user: user_data_object.user,
+            student_id: parseInt(student_id),
+            student_firstname: student_firstname,
+            student_lastname: student_lastname,
+            student_behavior: parseInt(student_behavior) || 1,
+            student_math: parseInt(student_math) || 1,
+            student_english: parseInt(student_english) || 1,
+            student_science: parseInt(student_science) || 1
+        };
+
+        console.log(send_object);
+
+        $.ajax({
+            method: 'PUT',
+            url: '/api/student',
+            data: send_object,
+            success: function(data, status, jqxhr) {
+                console.log('successfully updated student, refreshing page.');
+
+                // TODO:
+                refresh_view();
+                toggle_student_input_modal();
             },
             error: function(jqxhr, status, err) {
                 console.log('error saving student.' + err);
@@ -296,7 +407,17 @@
     };
 
     add_student_button.onclick = function(e) {
+        clear_student_input_form_values();
         toggle_student_input_modal();
+
+        // redefine button to save again.
+        student_form_save_button.innerHTML = 'save';
+        student_form_save_button.onclick = function(e){
+            e.preventDefault();
+            console.log('student item saved. ');
+            toggle_student_input_modal();
+            add_new_student();
+        };
     };
 
 
