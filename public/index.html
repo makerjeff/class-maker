@@ -8,6 +8,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+
+    </style>
 </head>
 <body>
 
@@ -22,6 +27,90 @@
 
 <!-- PAGE CONTAINER-->
 <div id="container" class="container">
+
+    <!-- ADD BUTTON-->
+    <div id="add_button" class="add_button fa fa-user-plus "></div>
+
+    <!-- STUDENT FORM -->
+    <div id="student_form_container" class="student_form_container">
+        <form id="student_form" method="POST" action="/">
+
+            <div class="text_input_field">
+                <label for="student_id_input"> student id </label>
+                <input id="student_id_input" name="student_id_input" type="text" autocomplete="off" placeholder="">
+            </div>
+
+            <div class="text_input_field">
+                <label for="student_firstname_input"> first name </label>
+                <input id="student_firstname_input" name="student_firstname_input" type="text" autocomplete="off" placeholder="">
+            </div>
+
+            <div class="text_input_field">
+                <label for="student_lastname_input"> last name </label>
+                <input id="student_lastname_input" name="student_lastname_input" type="text" autocomplete="off" placeholder="">
+            </div>
+            <br>
+            <label for="behavior">behavior</label> <br> <span>(poor)</span>
+            <input name="behavior" type="radio" value="1">
+            <input name="behavior" type="radio" value="2">
+            <input name="behavior" type="radio" value="3">
+            <input name="behavior" type="radio" value="4">
+            <input name="behavior" type="radio" value="5">
+            <input name="behavior" type="radio" value="6">
+            <input name="behavior" type="radio" value="7">
+            <input name="behavior" type="radio" value="8">
+            <input name="behavior" type="radio" value="9">
+            <input name="behavior" type="radio" value="10"> (great)
+            <br> <br>
+
+            <label for="math">math </label> <br> <span>(poor)</span>
+            <input name="math" type="radio" value="1">
+            <input name="math" type="radio" value="2">
+            <input name="math" type="radio" value="3">
+            <input name="math" type="radio" value="4">
+            <input name="math" type="radio" value="5">
+            <input name="math" type="radio" value="6">
+            <input name="math" type="radio" value="7">
+            <input name="math" type="radio" value="8">
+            <input name="math" type="radio" value="9">
+            <input name="math" type="radio" value="10"> (great)
+            <br> <br>
+
+            <label for="english">english </label> <br> <span>(poor)</span>
+            <input name="english" type="radio" value="1">
+            <input name="english" type="radio" value="2">
+            <input name="english" type="radio" value="3">
+            <input name="english" type="radio" value="4">
+            <input name="english" type="radio" value="5">
+            <input name="english" type="radio" value="6">
+            <input name="english" type="radio" value="7">
+            <input name="english" type="radio" value="8">
+            <input name="english" type="radio" value="9">
+            <input name="english" type="radio" value="10"> (great)
+            <br> <br>
+
+            <label for="science">science </label> <br ><span>(poor)</span>
+            <input name="science" type="radio" value="1">
+            <input name="science" type="radio" value="2">
+            <input name="science" type="radio" value="3">
+            <input name="science" type="radio" value="4">
+            <input name="science" type="radio" value="5">
+            <input name="science" type="radio" value="6">
+            <input name="science" type="radio" value="7">
+            <input name="science" type="radio" value="8">
+            <input name="science" type="radio" value="9">
+            <input name="science" type="radio" value="10"> (great)
+            <br> <br>
+
+            <div>
+                <button id="student_form_cancel_button">Cancel</button>
+                <button id="student_form_save_button" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="student_form_veil" class="student_form_veil"></div>
+
 
     <!-- MAIN MENU -->
     <div id="menu" class="menu">
@@ -38,109 +127,9 @@
     <!-- STUDENT VIEW -->
     <div class="students_title"> Students </div>
     <div id="students_view" class="students_view">
-
-        <!-- TODO: All of these elements to be dynamically created. -->
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">6.7</div>-->
-            <!--<div class="name">Jefferson Wu</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">7.8</div>-->
-            <!--<div class="name">Shirley Yang</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">3.2</div>-->
-            <!--<div class="name">Wynbertson Gan</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">7.8</div>-->
-            <!--<div class="name">Wayne Dong</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">4.5</div>-->
-            <!--<div class="name">Jimmy Duong</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">7.7</div>-->
-            <!--<div class="name">Janet Chu</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">5.4</div>-->
-            <!--<div class="name"> John Huynh</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">3.4</div>-->
-            <!--<div class="name">Julie Dong</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">6.7</div>-->
-            <!--<div class="name">Jefferson Wu</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">7.8</div>-->
-            <!--<div class="name">Shirley Yang</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">3.2</div>-->
-            <!--<div class="name">Wynbertson Gan</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">7.8</div>-->
-            <!--<div class="name">Wayne Dong</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">4.5</div>-->
-            <!--<div class="name">Jimmy Duong</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">7.7</div>-->
-            <!--<div class="name">Janet Chu</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">5.4</div>-->
-            <!--<div class="name"> John Huynh</div>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<img src="images/penguin_sm.jpg">-->
-            <!--<div class="score">3.4</div>-->
-            <!--<div class="name">Julie Dong</div>-->
-        <!--</div>-->
-
-
-
-
+        <!-- DYNAMICALLY CREATE ELEMENTS HERE -->
     </div>
-    <!-- STUDENT VIEW - END -->
+
 </div>
 <!-- MAIN MENU - END -->
 
@@ -150,11 +139,22 @@
 
 <script>
 
+    var student_form_container = document.getElementById('student_form_container');
+    var student_form_veil = document.getElementById('student_form_veil');
+    var student_form_cancel_button = document.getElementById('student_form_cancel_button');
+    var student_form_save_button = document.getElementById('student_form_save_button');
+
+
+    var add_student_button = document.getElementById('add_button');
+
     // FUNCTIONS ----------------
     function update_view(data_object, target_div) {
 
         data_object.forEach(function(elem, ind, arr){
 
+            var self = this;
+
+            // CREATES & ASSIGNS -------
             var div = document.createElement('div');
             div.id = data_object[ind].student_id;
 
@@ -172,6 +172,14 @@
             score_div.classList.add('name');
             name_div.innerHTML = data_object[ind].firstname + ' ' + data_object[ind].lastname;
 
+            // EVENT LISTENERS --------
+            div.onclick = function(e) {
+                console.log(div.id);
+
+                //TODO: wrap into an 'update' function.
+            };
+
+            // APPENDS -------
             div.appendChild(img);
             div.appendChild(score_div);
             div.appendChild(name_div);
@@ -180,12 +188,87 @@
         });
     }
 
+    function refresh_view() {
+        // clear
+        document.getElementById('students_view').innerHTML = '';
+
+        $.ajax({
+            method: 'GET',
+            url: '/api/student',
+            success: function(data, status, jqxhr) {
+                console.log(data.payload);
+                update_view(data.payload.students, document.getElementById('students_view'));
+            },
+            error: function(jqxhr, status, err) {
+                console.log(err);
+            }
+        });
+    }
+
     function get_average_score(data_object) {
         return ((data_object.stats.behavior + data_object.stats.math + data_object.stats.english + data_object.stats.science) / 4).toFixed(1);
     }
 
+    function toggle_student_input_modal() {
+
+        if(student_form_container.classList.contains('hide')) {
+            student_form_container.classList.remove('hide');
+            student_form_veil.classList.remove('hide');
+        } else {
+            student_form_container.classList.add('hide');
+            student_form_veil.classList.add('hide');
+        }
+    }
+
+    function add_new_student() {
+        var student_id = document.getElementById('student_id_input').value;
+        var student_firstname = document.getElementById('student_firstname_input').value;
+        var student_lastname = document.getElementById('student_lastname_input').value;
+
+        var student_behavior = $('input[name=behavior]:checked').val();
+        var student_math = $('input[name=math]:checked').val();
+        var student_english = $('input[name=english]:checked').val();
+        var student_science = $('input[name=science]:checked').val();
+
+        //DEBUG
+
+        send_object = {
+            user: user_data_object.user,
+            student_id: parseInt(student_id),
+            student_firstname: student_firstname,
+            student_lastname: student_lastname,
+            student_behavior: parseInt(student_behavior) || 0,
+            student_math: parseInt(student_math) || 0,
+            student_english: parseInt(student_english) || 0,
+            student_science: parseInt(student_science) || 0
+        };
+
+        console.log(send_object);
+
+        $.ajax({
+            method: 'POST',
+            url: '/api/student',
+            data: send_object,
+            success: function(data, status, jqxhr) {
+                console.log('successfully added student, refreshing page.');
+
+                // TODO:
+//                refresh_view();
+            },
+            error: function(jqxhr, status, err) {
+                console.log('error saving student.' + err);
+            }
+
+        });
+    }
+
+
+
     // EVENTS --------------------
     window.addEventListener('DOMContentLoaded', function(e){
+
+        toggle_student_input_modal();
+
         $.ajax({
             method: 'GET',
             url: '/api/student',
@@ -198,6 +281,31 @@
             }
         });
     });
+
+    student_form_cancel_button.onclick = function(e){
+        e.preventDefault();
+        console.log('cancelled student view');
+        toggle_student_input_modal();
+    };
+
+    student_form_save_button.onclick = function(e){
+        e.preventDefault();
+        console.log('student item saved. ');
+        toggle_student_input_modal();
+        add_new_student();
+    };
+
+    add_student_button.onclick = function(e) {
+        toggle_student_input_modal();
+    };
+
+
+    // helper functions ---------
+    function capitalize(input) {
+        return input[0].toUpperCase() + input.slice(1, input.length);
+    }
+
+    // EDIT MODAL FUNCTIONS ---------------
 </script>
 
 </body>

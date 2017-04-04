@@ -70,7 +70,7 @@ window.addEventListener('load', function(e){
 function logout() {
     $.ajax({
         method: 'GET',
-        url: '/api/clearcookie',
+        url: '/clearcookie',
         success: function(data, status, jqxhr){
             console.log('logged out. ');
             window.location.href = '/';

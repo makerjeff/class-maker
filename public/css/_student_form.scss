@@ -1,0 +1,58 @@
+label {
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+input[type=radio] {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+input[type=text] {
+  font-size: 16px;
+  border: 0px solid black;
+  border-bottom: 1px solid black;
+
+  max-width: 300px;
+
+  color: rgb(75, 75, 255);
+
+  border-radius: 0;
+  padding: 10px;
+}
+input[type=text]:focus {
+  outline: none;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+}
+
+.student_form_container {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  padding: 20px 20px 10px 50px;
+  width: 80vw;
+  height: 80vh;
+  /*border-radius: 5px;*/
+  border: 1px solid #666;
+  background: white;
+  overflow-y: scroll;
+  z-index: 550;
+}
+
+.student_form_veil {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top:0;
+  left: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 500;
+}

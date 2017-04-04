@@ -25,15 +25,10 @@
 
         input[type=radio] {
             display: inline-block;
+            width: 20px;
+            height: 20px;
             margin: 0 10px;
             border: 5px solid green;
-        }
-
-        input[type=text] {
-            font-size: 16px;
-            border: 0px solid black;
-            border-bottom: 1px solid black;
-            padding: 10px;
         }
         input[type=text]:focus {
             outline: none;
@@ -45,13 +40,17 @@
         }
 
         .text_input_field {
+            font-size: 16px;
+            border: 0px solid black;
+            border-bottom: 1px solid black;
+            padding: 10px;
         }
 
     </style>
 </head>
 <body>
 
-<form id="input_form" method="POST" action="/">
+<form id="student_form" method="POST" action="/">
 
     <div class="text_input_field">
         <label for="student_id"> student id </label> <br>

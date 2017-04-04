@@ -367,6 +367,13 @@ app.post('/signup', function(req, res){
     });
 });
 
+app.get('/clearcookie', function(req, res) {
+    res.clearCookie('token');
+    console.log('token cookie cleared, AKA logged out. ');
+    res.json({status: 'success', payload: {message:'Token cookie cleared. '}});
+});
+
+
 
 // === CUSTOM ROUTER OBJECT ====
 
@@ -407,11 +414,11 @@ router.get('/', function(req, res){
 
 
 
-router.get('/clearcookie', function(req, res) {
-    res.clearCookie('token');
-    console.log('token cookie cleared, AKA logged out. ');
-    res.json({status: 'success', payload: {message:'Token cookie cleared. '}});
-});
+// router.get('/clearcookie', function(req, res) {
+//     res.clearCookie('token');
+//     console.log('token cookie cleared, AKA logged out. ');
+//     res.json({status: 'success', payload: {message:'Token cookie cleared. '}});
+// });
 
 
 // GET USER DATA FOR LOGOUT and INDICATOR
@@ -568,6 +575,7 @@ router.post('/signup', function(req, res){
 // /api/students/:student_id    - PUT   - Update student (tied to JWT account)
 // /api/students/:student_id    - DELETE    - Deletes a student (tied to JWT account)
 
+//STUDENT - GET
 router.get('/student', function(req, res){
 
     // Search for all students in the database.
@@ -600,6 +608,7 @@ router.get('/student', function(req, res){
     });
 });
 
+// STUDENT - POST
 router.post('/student', function(req, res) {
 
     token_to_verify = req.signedCookies.token;
@@ -610,11 +619,57 @@ router.post('/student', function(req, res) {
             console.log('error verifying token. ');
             res.send('failed.');
         } else {
-            console.log('Your user ID: ' + decoded.user + ' ' + decoded.friends);
+            // console.log('Your user ID: ' + decoded.user + ' ' + decoded.friends);
 
+            console.log('checking: ' + chalk.yellow(req.body.user));
+
+            new Student({user: decoded.user, student_id: req.body.student_id, firstname: req.body.student_firstname, lastname: req.body.student_lastname, stats: {behavior:req.body.student_behavior, math:req.body.student_math, english:req.body.student_english, science:req.body.student_science}}).save(function(err){
+                if(err) {
+                    console.log('error saving to database. ' + err);
+                    res.send('error saving to database. ');
+                } else {
+                    console.log(chalk.yellow('added ' + decoded.user + ' ' + req.body.student_id));
+                    res.send('(TEMP) student added. ');
+                }
+            });
         }
     });
 });
+
+// STUDENT - GET (INDIVIDUAL)
+router.get('/student/:student_id', function(req, res){
+
+    // Search for single student (to edit item)
+
+    token_to_verify = req.signedCookies.token;
+    console.log('Token in signed cookie:' + chalk.blue(token_to_verify));
+
+    //TODO: check token
+    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded) {
+        if(err) {
+            console.log('error verifying token. ');
+            res.send('failed.');
+        } else {
+            console.log('Your user ID: ' + decoded.user + ' ' + decoded.friends);
+
+            Student.find({user: decoded.user, student_id: req.params.student_id }, function(err, result){
+                if (err) {
+                    console.log('error finding students. ');
+                    console.log(err);
+                    res.send('no student found. ');
+                } else {
+                    result.forEach(function(elem,ind,arr){
+                        console.log(elem);
+                    });
+
+                    res.json({status: 'success', payload: {message: 'Students found.', students: result}});
+                }
+            });
+        }
+    });
+});
+
+
 
 
 // =============================================
