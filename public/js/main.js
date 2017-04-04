@@ -104,7 +104,7 @@ function submit_new_user(input_email, input_pwd) {
 
     $.ajax({
         method: 'POST',
-        url: '/api/signup',
+        url: '/signup',
         data: {email: clean_email, password: clean_pwd},
         success: function(data, status, jqxhr) {
             handle_response(jqxhr, data, document.getElementById('resultDiv'));
@@ -139,7 +139,7 @@ function submit_login(input_email, input_pwd){
 
     $.ajax({
         method: 'POST',
-        url: '/api/authenticate',
+        url: '/authenticate',
         data: {email: clean_email, password: clean_pwd},
         success: function(data, status, jqxhr) {
             console.log('from ajax: ');

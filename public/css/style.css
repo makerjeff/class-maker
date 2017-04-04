@@ -177,7 +177,8 @@ input {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  flex-flow: row wrap; }
 
 .students_view > div {
   display: flex;
