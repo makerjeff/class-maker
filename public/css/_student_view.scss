@@ -33,6 +33,9 @@
   text-transform: capitalize;
 
   cursor: pointer;
+
+  overflow: hidden;
+
 }
 
 .students_view > div:hover {
@@ -58,4 +61,29 @@
   justify-content: center;
 
   font-size: 1.75em;
+}
+
+.close_button {
+  position: absolute;
+
+  top: 0px;
+  right: 0px;
+
+  width: 30px;
+  height: 30px;
+
+  color: rgb(240,240,240);
+  //background: white;
+
+  border-radius: 50%;
+
+  transition: all 250ms ease;
+
+  z-index: 5;
+
+}
+
+.close_button:hover {
+  transform: scale(3,3) translate(-5px, 5px);
+  color: red;
 }

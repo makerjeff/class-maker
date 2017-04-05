@@ -40,7 +40,7 @@ input[type=email], input[type=text], input[type=password] {
 
 .button {
   width: 100%;
-  background-color: #5347ff;
+  background-color: #4a86e8;
   color: white;
   padding: 13px 20px;
   margin: 8px 0;
@@ -128,8 +128,15 @@ input[type=email], input[type=text], input[type=password] {
   top: 50%;
   left: 30px;
   transform: translate(0, -50%);
+  font-family: 'Montserrat', 'Lato', sans-serif;
+  font-weight: 700;
   font-size: 1.75em;
-  color: white; }
+  color: white;
+  cursor: pointer;
+  transition: all 250ms ease; }
+
+.logo:hover {
+  letter-spacing: 2px; }
 
 .menu {
   display: block;
@@ -194,7 +201,8 @@ input[type=email], input[type=text], input[type=password] {
   transition: all 250ms ease;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
   text-transform: capitalize;
-  cursor: pointer; }
+  cursor: pointer;
+  overflow: hidden; }
 
 .students_view > div:hover {
   transform: scale(1.05, 1.05);
@@ -214,6 +222,21 @@ input[type=email], input[type=text], input[type=password] {
   display: flex;
   justify-content: center;
   font-size: 1.75em; }
+
+.close_button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  color: #f0f0f0;
+  border-radius: 50%;
+  transition: all 250ms ease;
+  z-index: 5; }
+
+.close_button:hover {
+  transform: scale(3, 3) translate(-5px, 5px);
+  color: red; }
 
 .add_button {
   display: flex;
@@ -301,7 +324,7 @@ button {
   left: 0;
   width: 100%;
   height: 56px;
-  background: #5347ff;
+  background: #4a86e8;
   z-index: 100;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3); }
 

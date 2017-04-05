@@ -667,6 +667,37 @@ router.put('/student', function(req, res) {
 
 });
 
+router.delete('/student', function(req, res) {
+    token_to_verify = req.signedCookies.token;
+    console.log('Token in signed cookie:' + chalk.blue(token_to_verify));
+
+    jwt.verify(token_to_verify, tokencreds.jwtSecret, function(err, decoded) {
+        if(err) {
+            console.log('error verifying token. ');
+            res.send('failed.');
+        } else {
+            // console.log('Your user ID: ' + decoded.user + ' ' + decoded.friends);
+
+            console.log('checking: ' + chalk.yellow(req.body.user));
+
+            var query = {user: decoded.user, student_id: req.body.student_id, firstname: req.body.student_firstname, lastname: req.body.student_lastname};
+
+            Student.findOne(query, function(err, user) {
+
+                user.remove(function(err) {
+                    if(err) {
+                        console.log(chalk.yellow('error removing entry. '));
+                        res.send('error removing entry. ');
+                    } else {
+                        console.log(chalk.green('successfully removed entry. '));
+                        res.send('successfully removed entry. ');
+                    }
+                });
+            });
+        }
+    });
+});
+
 // STUDENT - GET (INDIVIDUAL)
 router.get('/student/:student_id', function(req, res){
 

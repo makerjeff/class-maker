@@ -9,8 +9,17 @@
   top: 50%;
   left: 30px;
   transform: translate(0, -50%);
+  font-family: 'Montserrat', 'Lato', sans-serif;
+  font-weight: 700;
   font-size: 1.75em;
   color: white;
+
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+
+.logo:hover {
+  letter-spacing: 2px;
 }
 
 .menu {
